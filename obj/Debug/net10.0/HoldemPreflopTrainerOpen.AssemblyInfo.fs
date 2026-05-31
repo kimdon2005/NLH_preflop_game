@@ -10,7 +10,7 @@ open System.Reflection
 [<assembly: System.Reflection.AssemblyCompanyAttribute("HoldemPreflopTrainerOpen")>]
 [<assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")>]
 [<assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")>]
-[<assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")>]
+[<assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fc14897b8d62c967801dda66007f0e92411de2bc")>]
 [<assembly: System.Reflection.AssemblyProductAttribute("HoldemPreflopTrainerOpen")>]
 [<assembly: System.Reflection.AssemblyTitleAttribute("HoldemPreflopTrainerOpen")>]
 [<assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")>]

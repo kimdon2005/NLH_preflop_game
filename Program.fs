@@ -126,6 +126,12 @@ let parseHandCount args =
 
     loop (Array.toList args)
 
+let waitForContinue () =
+    if Console.IsInputRedirected then
+        Console.ReadLine() |> ignore
+    else
+        Console.ReadKey(true) |> ignore
+
 let runAudit (chart: ChartEntry list) =
     let stacks =
         chart
@@ -145,20 +151,41 @@ let runAudit (chart: ChartEntry list) =
     printfn "Boundary rows: %d" boundaryCount
     printfn "Expected rows for 12 stacks * 7 positions * 169 hands: %d" (12 * 7 * 169)
 
-let askPlayerAction () =
-    let prompt =
-        SelectionPrompt<string>()
-            .Title("[yellow]첫 액션을 선택하세요[/]")
-            .AddChoices([| "Allin"; "Raise"; "Call"; "Fold" |])
+let rec askPlayerAction () =
+    AnsiConsole.MarkupLine("[yellow]첫 액션을 선택하세요[/]")
+    AnsiConsole.MarkupLine("1. Allin")
+    AnsiConsole.MarkupLine("2. Raise")
+    AnsiConsole.MarkupLine("3. Call")
+    AnsiConsole.MarkupLine("4. Fold")
+    AnsiConsole.Markup("[grey]> [/]")
 
-    match AnsiConsole.Prompt(prompt) with
-    | "Allin" -> Allin
-    | "Raise" -> Raise
-    | "Call" -> Call
-    | _ -> Fold
+    match Console.ReadLine() with
+    | null -> Fold
+    | value ->
+        match value.Trim().ToLowerInvariant() with
+        | "1"
+        | "allin"
+        | "all-in"
+        | "jam" -> Allin
+        | "2"
+        | "raise"
+        | "r" -> Raise
+        | "3"
+        | "call"
+        | "c" -> Call
+        | "4"
+        | "fold"
+        | "f" -> Fold
+        | _ ->
+            AnsiConsole.MarkupLine("[red]Invalid action. Enter 1, 2, 3, 4, or an action name.[/]")
+            askPlayerAction ()
+
+let safeClear () =
+    if not Console.IsInputRedirected then
+        AnsiConsole.Clear()
 
 let renderWelcome (chart: ChartEntry list) =
-    AnsiConsole.Clear()
+    safeClear ()
     AnsiConsole.Write(FigletText("GTO Open").Color(Color.Green))
 
     let stacks =
@@ -188,10 +215,10 @@ let renderWelcome (chart: ChartEntry list) =
             .Border(BoxBorder.Rounded))
 
     AnsiConsole.MarkupLine("\n[grey]Press any key to start...[/]")
-    Console.ReadKey(true) |> ignore
+    waitForContinue ()
 
 let renderScenario handNo totalHands entry =
-    AnsiConsole.Clear()
+    safeClear ()
     AnsiConsole.Write(Rule(sprintf "Hand %d / %d" handNo totalHands).RuleStyle("green").Centered())
 
     let info =
@@ -292,7 +319,7 @@ let renderImmediateFeedback entry choice =
             .Border(BoxBorder.Rounded))
 
     AnsiConsole.MarkupLine("\n[grey]Press any key for next hand...[/]")
-    Console.ReadKey(true) |> ignore
+    waitForContinue ()
     grade
 
 let summarizeResults (results: Result list) =
@@ -301,7 +328,7 @@ let summarizeResults (results: Result list) =
     let compatible = results |> List.filter (fun r -> r.Grade <> Incorrect) |> List.length
     let boundaryHands = results |> List.filter (fun r -> r.Entry.IsBoundary) |> List.length
 
-    AnsiConsole.Clear()
+    safeClear ()
     AnsiConsole.Write(Rule("Session Review").RuleStyle("blue").Centered())
 
     let summary =
@@ -349,7 +376,7 @@ let summarizeResults (results: Result list) =
     AnsiConsole.MarkupLine("[bold]Hand log[/]")
     AnsiConsole.Write(log)
     AnsiConsole.MarkupLine("\n[grey]Press any key to exit...[/]")
-    Console.ReadKey(true) |> ignore
+    waitForContinue ()
 
 [<EntryPoint>]
 let main args =

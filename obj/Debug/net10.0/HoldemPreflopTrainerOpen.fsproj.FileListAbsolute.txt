@@ -29,3 +29,4 @@
 /Users/gimdong-yun/Documents/2026S/프밍이/gameproject/HoldemPreflopTrainerOpen/obj/Debug/net10.0/HoldemPreflopTrainerOpen.pdb
 /Users/gimdong-yun/Documents/2026S/프밍이/gameproject/HoldemPreflopTrainerOpen/obj/Debug/net10.0/HoldemPreflopTrainerOpen.genruntimeconfig.cache
 /Users/gimdong-yun/Documents/2026S/프밍이/gameproject/HoldemPreflopTrainerOpen/obj/Debug/net10.0/ref/HoldemPreflopTrainerOpen.dll
+/Users/gimdong-yun/Documents/2026S/프밍이/gameproject/HoldemPreflopTrainerOpen/obj/Debug/net10.0/HoldemPreflopTrainerOpen.sourcelink.json
