@@ -30,6 +30,10 @@ The trainer uses 8-ring MTT open-position labels:
 
 Earlier positions such as UTG generally need tighter ranges because more players remain behind. Later positions such as BTN can usually open wider because fewer players remain and postflop position is better.
 
+Stack depth also changes the correct action. In this project, stack depth is measured in `bb`, meaning big blinds. A player with more `bb` has a deeper stack, while a player with fewer `bb` has a shorter stack.
+
+Shorter stacks often need to take more aggressive preflop actions because the player has less room to wait for perfect hands. Deeper stacks can usually be more selective. Balancing position, hand strength, and stack depth is part of the GTO strategy used by this trainer.
+
 ## Requirements
 
 - .NET SDK 10.0 or newer
@@ -101,6 +105,8 @@ After each choice, the game shows:
 At the end of the session, the game prints a session review with accuracy and a hand log.
 
 The session review is the end condition of the game. It summarizes all player choices and then the program exits after the final key press.
+
+The goal is to help the player repeatedly practice which hands should attack and which hands should fold depending on position and stack depth.
 
 ## Scoring
 
@@ -254,11 +260,19 @@ Main thing the LLM did not do correctly on the first try:
 
 간략히 말하면 UTG에 가까운 앞 포지션일수록 뒤에 남은 플레이어가 많기 때문에 더 좋은 핸드를 사용해야 합니다. 반대로 BTN처럼 뒤 포지션일수록 남은 플레이어가 적고 플랍 이후 포지션도 좋아 더 넓은 레인지로 오픈할 수 있습니다.
 
-이 게임은 어떤 핸드로 공격하고 어떤 핸드는 폴드해야 하는 것이 GTO적으로 올바른지, 반복적으로 연습하기 위해 만들었습니다.
+또한 자신이 가진 칩의 양에 따라 올바른 선택이 달라지기도 합니다. 홀덤에서는 이 칩의 양을 스택이라고 부릅니다. 스택이 낮을수록 오래 기다릴 여유가 적기 때문에 더 넓은 핸드로 공격해야 하는 상황이 자주 생깁니다.
 
-플레이어는 유효 스택, 포지션, 시작 핸드를 보고 하나의 액션을 선택합니다. 선택 후 게임은 저장된 전략 빈도를 보여 주고, 플레이어의 선택을 평가합니다.
+여기서 `bb`는 빅블라인드(big blind)를 뜻하며, 홀덤에서 스택 크기를 표시할 때 자주 사용합니다. 가진 `bb`가 높을수록 더 깊은 스택을 가진 것이고, 낮을수록 짧은 스택을 가진 것입니다.
+
+일반적으로 `bb`가 많을수록 더 좋은 핸드를 골라 공격할 수 있고, `bb`가 적을수록 상대적으로 약한 핸드도 공격에 포함될 수 있습니다. 포지션, 핸드 강도, 스택 깊이를 함께 균형 맞추는 것이 이 트레이너에서 사용하는 GTO 전략의 핵심입니다.
+
+결론적으로 이 게임은 자신의 포지션, 스택에 따라 어떤 핸드로 공격하고 어떤 핸드는 폴드해야 하는 것이 GTO적으로 올바른지, 반복적으로 연습하기 위해 만들었습니다.
+
+선택 후 게임은 저장된 전략 빈도를 보여 주고, 플레이어의 선택을 평가합니다.
 
 최종적으로 플레이어의 모든 선택을 평가하는 표를 보여 주고 게임을 마무리합니다.
+
+이 게임을 활용하면 프리플랍 오픈 레인지와 스택별 전략 차이를 반복적으로 연습할 수 있습니다.
 
 ## 요구사항
 
