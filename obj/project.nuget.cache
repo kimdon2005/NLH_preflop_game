@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "QlO8ZT4C7LQ=",
+  "success": true,
+  "projectFilePath": "/Users/gimdong-yun/Documents/2026S/프밍이/gameproject/HoldemPreflopTrainerOpen/HoldemPreflopTrainerOpen.fsproj",
+  "expectedPackageFiles": [
+    "/Users/gimdong-yun/.nuget/packages/fsharp.core/11.0.100/fsharp.core.11.0.100.nupkg.sha512",
+    "/Users/gimdong-yun/.nuget/packages/spectre.console/0.49.1/spectre.console.0.49.1.nupkg.sha512"
+  ],
+  "logs": []
+}

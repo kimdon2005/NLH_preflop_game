@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<linker>
+  <assembly fullname="HoldemPreflopTrainerOpen">
+    <resource name="FSharpSignatureData.HoldemPreflopTrainerOpen" action="remove"></resource>
+    <resource name="FSharpSignatureCompressedData.HoldemPreflopTrainerOpen" action="remove"></resource>
+    <resource name="FSharpSignatureDataB.HoldemPreflopTrainerOpen" action="remove"></resource>
+    <resource name="FSharpSignatureCompressedDataB.HoldemPreflopTrainerOpen" action="remove"></resource>
+    <resource name="FSharpOptimizationData.HoldemPreflopTrainerOpen" action="remove"></resource>
+    <resource name="FSharpOptimizationCompressedData.HoldemPreflopTrainerOpen" action="remove"></resource>
+    <resource name="FSharpOptimizationDataB.HoldemPreflopTrainerOpen" action="remove"></resource>
+    <resource name="FSharpOptimizationCompressedDataB.HoldemPreflopTrainerOpen" action="remove"></resource>
+    <resource name="FSharpOptimizationInfo.HoldemPreflopTrainerOpen" action="remove"></resource>
+    <resource name="FSharpSignatureInfo.HoldemPreflopTrainerOpen" action="remove"></resource>
+  </assembly>
+</linker>
